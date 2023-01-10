@@ -9,6 +9,11 @@ function SignIn() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState ('')
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    alert('clicou')
+  }
+
   return (
     <div className="container-center">
 
@@ -17,14 +22,15 @@ function SignIn() {
           <img src={logo} alt="logo" />
         </div>
 
-        <form>
-          <h1>Entrar</h1>
-          <input type="text" placeholder='exemplo@email.com' />
-          <input type="password" placeholder='digite sua senha: *********' />
-          <button type='submit'>Acessar</button>
+        <form onSubmit={handleSubmit}>
+          <h1>Entre</h1>
+          <input type="text" placeholder='exemplo@email.com' value={email} onChange={(e) => setEmail(e.target.value)} />
+
+          <input type="password" placeholder='digite sua senha: *********' value={senha} onChange={(e) => setSenha(e.target.value)} />
+          <button type='submit'>Entrar</button>
         </form>
 
-        <Link to='/registro'>Clique aqui e faça sua conta</Link>
+        <Link to='/registro'>CLIQUE AQUI E CADASTRE-SE</Link>
       </div>
       
     </div>
