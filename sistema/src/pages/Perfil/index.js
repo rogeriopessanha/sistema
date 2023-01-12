@@ -11,8 +11,8 @@ export default function Perfil() {
             <Header/>
 
             <div className="content">
-                <Title name='Meu Perfil'>
-                    <FiSettings color='#000' size={25}/>
+                <Title name='Meu perfil'>
+                    <FiSettings size={25}/>
                 </Title>
             </div>
         </div>
