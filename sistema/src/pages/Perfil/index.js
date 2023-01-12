@@ -12,7 +12,7 @@ export default function Perfil() {
 
             <div className="content">
                 <Title name='Meu perfil'>
-                    <FiSettings size={25}/>
+                    <FiSettings size={20}/>
                 </Title>
             </div>
         </div>
