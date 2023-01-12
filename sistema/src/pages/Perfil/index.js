@@ -11,46 +11,53 @@ import { FiSettings, FiUpload } from "react-icons/fi";
 
 export default function Perfil() {
 
-    const { user} = useContext(AuthContext)
+    const { user, signOut } = useContext(AuthContext)
 
     const [nome, setNome] = useState(user && user.nome)
     const [email, setEmail] = useState(user && user.email)
     const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
-    
 
 
-    return(
+
+    return (
         <div>
-            <Header/>
+            <Header />
 
             <div className="content">
                 <Title name='Meu perfil'>
-                    <FiSettings size={20}/>
+                    <FiSettings size={20} />
                 </Title>
 
                 <div className="container">
                     <form className="form-perfil">
                         <label className="label-avatar">
                             <span>
-                                <FiUpload color='#fff' size={20}/>
+                                <FiUpload color='#fff' size={20} />
                             </span>
 
-                            <input type="file" accept='image/*'/> <br/>
-                            { avatarUrl === null ?
-                            <img src={avatar} width='250' height='250' alt="foto de perfil usuario" />
-                            : 
-                            <img src={avatarUrl} width='250' height='250' alt="foto de perfil usuario" />
+                            <input type="file" accept='image/*' /> <br />
+                            {avatarUrl === null ?
+                                <img src={avatar} width='250' height='250' alt="foto de perfil usuario" />
+                                :
+                                <img src={avatarUrl} width='250' height='250' alt="foto de perfil usuario" />
                             }
                         </label>
 
                         <label>Nome</label>
-                        <input type="text" value={nome} onChange={ (e) => setNome(e.target.value)} />
+                        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
 
                         <label>Email</label>
                         <input type="text" value={email} disabled={true} />
 
-                        <button type='submit'>Salvar</button>
+                        <button className="btn-dash" type='submit'>Salvar</button>
+
                     </form>
+                </div>
+
+                <div className="container">
+                <button className="sair-btn" onClick={() => signOut()}>
+                            Sair
+                        </button>
                 </div>
             </div>
         </div>
