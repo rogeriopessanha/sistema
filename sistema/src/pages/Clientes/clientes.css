@@ -1,0 +1,11 @@
+
+.container-cliente{
+    display: flex;
+    background-color: #bababa;
+    border-radius: 5px;
+    padding: .6rem;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+   
+}

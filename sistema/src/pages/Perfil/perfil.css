@@ -1,22 +1,22 @@
-.container {
+
+ .container-perfil {
     display: flex;
-    background-color: #f8f8f8;
+    background-color: #bababa;
     border-radius: 5px;
     padding: .6rem;
     align-items: center;
     justify-content: center;
-
-
 }
 
 .label-avatar {
-    /* width: 220px; */
-    height: 240px;
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
+  
 }
 
 .label-avatar input {
@@ -45,10 +45,13 @@
     margin-bottom: 3.5rem;
     border-radius: 50%;
     object-fit: cover;
+    width: 200px;
+    height: 200px;
+
 }
 
 .form-perfil label {
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
     font-size: 1.2rem;
 }
 
@@ -60,15 +63,15 @@ select {
     padding: .5rem;
     border-radius: 5px;
     max-width: 350px;
-    width: 350px;
-    font-size: 20px;
+    width: 300px;
+    font-size: 16px;
 }
 
 .form-perfil input:disabled {
     cursor: not-allowed;
 }
 
-.btn-dash {
+.btn-perfil {
     height: 35px;
     width: 120px;
     bottom: 0;
@@ -80,11 +83,9 @@ select {
     /* margin-left: 0px; */
     transition: all .5s;
     font-weight: 600;
-
-
 }
 
-.btn-dash:hover {
+.btn-perfil:hover {
     color: #181c2e;
     background-color: #fff;
 }
@@ -112,4 +113,4 @@ select {
     background-color: #fff;
     border: 1px solid #950202;
 }
-
+ 

@@ -95,7 +95,7 @@ export default function Perfil() {
                     <FiSettings size={20} />
                 </Title>
 
-                <div className="container">
+                <div className="container-perfil">
                     <form className="form-perfil" onSubmit={handleSave}>
                         <label className="label-avatar">
                             <span>
@@ -116,12 +116,12 @@ export default function Perfil() {
                         <label>Email</label>
                         <input type="text" value={email} disabled={true} />
 
-                        <button className="btn-dash" type='submit'>Salvar</button>
+                        <button className="btn-perfil" type='submit'>Salvar</button>
 
                     </form>
                 </div>
 
-                <div className="container">
+                <div className="container-perfil">
                 <button className="sair-btn" onClick={() => signOut()}>
                             Sair
                         </button>

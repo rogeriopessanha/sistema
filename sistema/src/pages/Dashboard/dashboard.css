@@ -1,21 +1,23 @@
 
-.dashboard{
+.container-dashboard{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #bababa;
 }
 
-.dashboard span{
+.container-dashboard span{
     margin: 2em 0;
     font-size: 1.2em;
     font-weight: 600;
 }
 
 .novo{
+    width: 140px;
     float: right;
     margin-bottom: 1em;
-    background-color: #83bf02;
+    background-color: #2502bf;
     color: #fff;
     border: 0;
     padding: .5em;
@@ -29,7 +31,7 @@
 }
 
 .novo:hover{
-    background-color: #5fd204;
+    background-color: #441aff;
     transform: scale(1.1);
 }
 

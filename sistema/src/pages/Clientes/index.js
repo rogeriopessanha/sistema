@@ -51,7 +51,7 @@ export default function Clientes() {
                     <FiUser size={20}/>
                 </Title>
 
-                <div className="container">
+                <div className="container-cliente">
                     <form className="form-perfil clientes" onSubmit={handleAdd}>
                         <label>Nome Fantasia</label>
                         <input type="text" placeholder='Nome da sua empresa' value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} />

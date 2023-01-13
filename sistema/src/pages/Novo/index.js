@@ -23,9 +23,9 @@ export default function Novo() {
                     <FiPlusCircle size={20} />
                 </Title>
 
-                <div className="container">
+                <div className="container-novo-chamado">
 
-                    <form className="form-perfil-cliente" onSubmit={handleRegistro}>
+                    <form className="novo-chamado" onSubmit={handleRegistro}>
 
                         <label>Cliente</label>
                         <select>
@@ -69,7 +69,7 @@ export default function Novo() {
                             placeholder='Descreva seu problema(opcional)'
                         />
 
-                        <button type='submit'>Registrar</button>
+                        <button className="novo-chamado-btn" type='submit'>Registrar</button>
 
 
                     </form>

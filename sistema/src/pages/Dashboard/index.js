@@ -23,7 +23,7 @@ export default function Dashboard() {
                 </Title>
 
                 {chamados.length === 0 ? (
-                    <div className="container dashboard">
+                    <div className="container-dashboard">
                         <span>Nenhum chamado registrado</span>
 
                         <Link to='/novo' className="novo">
@@ -58,11 +58,11 @@ export default function Dashboard() {
                                     </td>
                                     <td data-label='Cadastrado'>12/01/2023</td>
                                     <td data-label='#'>
-                                        <button className="acao" style={{backgroundColor: '#3583f6'}}>
+                                        <button className="btn-acao" style={{backgroundColor: '#3583f6'}}>
                                             <FiSearch color='#fff' size={16}/>
                                         </button>
 
-                                        <button className="acao" style={{backgroundColor: '#f6a935'}}>
+                                        <button className="btn-acao" style={{backgroundColor: '#f6a935'}}>
                                             <FiEdit2 color='#fff' size={16}/>
                                         </button>
                                     </td>
