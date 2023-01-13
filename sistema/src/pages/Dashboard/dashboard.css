@@ -81,3 +81,10 @@ table td .acao{
 table td .acao svg{
     vertical-align: middle;
 }
+
+table td .andamento{
+    padding: 3px;
+    border-radius: 3px;
+    color: #fff;
+}
+
