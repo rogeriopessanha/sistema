@@ -33,8 +33,36 @@ export default function Perfil() {
         }
     }
 
-    function handleUpload() {
-        
+    async function handleUpload() {
+        const currentUid = user.uid
+
+        const uploadTask = await firebase.storage()
+        .ref(`images/${currentUid}/${imageAvatar.name}`)
+        .put(imageAvatar)
+        .then(async (async) =>{
+            console.log('Foto enviada com sucesso')
+
+            await firebase.storage().ref(`images/${currentUid}`)
+            .child(imageAvatar.name).getDownloadURL()
+            .then( async(url) =>{
+                let urlFoto = url
+
+                await firebase.firestore().collection('users')
+                .doc(user.uid)
+                .update({
+                    avatarUrl: urlFoto, nome: nome
+                })
+                .then(() =>{
+                    let data ={
+                        ...user,
+                        avatarUrl: urlFoto,
+                        nome: nome
+                    }
+                    setUser(data)
+                    storageUser(data)
+                })
+            })
+        })
     }
 
 

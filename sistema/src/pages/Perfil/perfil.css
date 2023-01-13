@@ -2,13 +2,16 @@
     display: flex;
     background-color: #f8f8f8;
     border-radius: 5px;
-    padding: .7rem;
+    padding: .6rem;
     align-items: center;
+    justify-content: center;
+
+
 }
 
 .label-avatar {
-    width: 280px;
-    height: 280px;
+    /* width: 220px; */
+    height: 240px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,14 +35,14 @@
     transform: scale(1.8);
 }
 
-/* .form-perfil{
+.form-perfil{
     display: flex;
     justify-content: center;
     align-items: center;
-} */
+}
 
 .form-perfil img {
-    margin-bottom: 1rem;
+    margin-bottom: 3.5rem;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -49,10 +52,11 @@
     font-size: 1.2rem;
 }
 
+
 .form-perfil input,
 textarea,
 select {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     padding: .5rem;
     border-radius: 5px;
     max-width: 350px;
@@ -73,9 +77,11 @@ select {
     color: #fff;
     font-size: 15px;
     margin: auto;
-    margin-left: 0px;
+    /* margin-left: 0px; */
     transition: all .5s;
     font-weight: 600;
+
+
 }
 
 .btn-dash:hover {
@@ -92,7 +98,7 @@ select {
     color: #fff;
     font-size: 15px;
     margin: auto;
-    margin-left: 0px;
+    /* margin-left: 0px; */
     transition: all .5s;
     font-weight: 600;
 
