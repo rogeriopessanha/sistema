@@ -72,7 +72,7 @@ table th{
 table td .acao{
     border: 0;
     padding: 5px;
-    margin: 6px;
+    margin: 3px;
     align-items: center;
     display: inline-block;
     border-radius: 4px;
@@ -120,6 +120,17 @@ table td .andamento{
         display: block;
         font-size: .8em;
         text-align: right;
+    }
+
+    table td::before{
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    table td:last-child{
+        border-bottom: 0;
     }
     
 }

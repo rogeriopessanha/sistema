@@ -1,0 +1,63 @@
+
+.container{
+    display: flex;
+    background-color: rgb(207, 133, 133);
+    border-radius: 5px;
+    padding: .8em;
+    align-items: center;
+    margin-bottom: 1em;
+    max-height: 550px;
+    height: 750px;
+  }
+
+  .form-perfil-cliente{
+    display: flex;
+    align-items: center;
+    
+  }
+
+form textarea{
+    height: 145px;
+    resize: none;
+}
+
+form input[type='radio']{
+    margin: 15px 0;
+}
+
+form input[type='radio']:not(:first-child){
+    margin-left: 15px;
+}
+
+.status span{
+    padding-left: .5em;
+    font-size: 1.3em;
+}
+
+.form-profile-cliente label{
+    margin-bottom: .5em;
+    font-size: 1.4em;
+  }
+  
+  .form-profile-cliente input, textarea, select{
+    margin-bottom: 1em;
+    padding: .7em;
+    border:0;
+    border-radius: 5px;
+    max-width: 600px;
+  }
+
+  .form-profile-cliente button{
+    max-width: 600px;
+  }
+  
+  .logout-btn{
+    padding: 8px 20px;
+    background-color: transparent;
+    border:1px solid #121212;
+    border-radius: 5px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
