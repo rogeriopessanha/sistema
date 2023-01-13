@@ -54,15 +54,15 @@ export default function Dashboard() {
                                     <td data-label='Cliente'>Sujeito</td>
                                     <td data-label='Assunto'>Assunto</td>
                                     <td data-label='Status'>
-                                        <span className="andamento" style={{backgroundColor: #5cb85c}}>Em aberto</span>
+                                        <span className="andamento" style={{backgroundColor: '#5cb85c'}}>Em aberto</span>
                                     </td>
                                     <td data-label='Cadastrado'>12/01/2023</td>
                                     <td data-label='#'>
-                                        <button className="acao" style={{backgroundColor: #3583f6}}>
+                                        <button className="acao" style={{backgroundColor: '#3583f6'}}>
                                             <FiSearch color='#fff' size={16}/>
                                         </button>
 
-                                        <button className="acao" style={{backgroundColor: #f6a935}}>
+                                        <button className="acao" style={{backgroundColor: '#f6a935'}}>
                                             <FiEdit2 color='#fff' size={16}/>
                                         </button>
                                     </td>
