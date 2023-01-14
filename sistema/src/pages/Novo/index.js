@@ -25,10 +25,10 @@ export default function Novo() {
         async function loadClientes() {
             await firebase.firestore().collection('clientes')
             .get()
-            .then((snapshort) =>{
+            .then((snapshot) =>{
                 let lista = []
 
-                snapshort.forEach((doc) =>{
+                snapshot.forEach((doc) =>{
                     lista.push({
                         id: doc.id,
                         nomeFantasia: doc.data().nomeFantasia

@@ -1,9 +1,6 @@
 import './dashboard.css'
 import { useState, useEffect } from 'react'
 
-// import { useContext } from "react"
-// import { AuthContext } from "../../contexts/auth"
-
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi'
@@ -11,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import firebase from '../../services/firebaseConnection'
 
-const listRef = firebase.firestore().collection('chamados').orderBy('created', 'desc')
+const listRef = firebase.firestore().collection('chamados').orderBy('created', 'desc');
 
 export default function Dashboard() {
     const [chamados, setChamados] = useState([])
@@ -30,17 +27,18 @@ export default function Dashboard() {
     }, [])
 
     async function loadChamados() {
-        await listRef.limit(5)
+        await listRef.limit(2)
             .get()
-            .then((snapshort) => {
-                updateState(snapshort)
+            .then((snapshot) => {
+                updateState(snapshot)
             })
             .catch((err) => {
-                console.log('Deu algum erro', err)
-                setLoadingMore(false)
+                console.log('Deu algum erro: ', err);
+                setLoadingMore(false);
             })
 
-        setLoading(false)
+        setLoading(false);
+
     }
 
 
@@ -76,8 +74,13 @@ export default function Dashboard() {
 
     }
 
-    function handleMore() {
-        
+    async function handleMore() {
+        setLoadingMore(true);
+        await listRef.startAfter(lastDocs).limit(2)
+            .get()
+            .then((snapshot) => {
+                updateState(snapshot)
+            })
     }
 
     if (loading) {
@@ -143,7 +146,7 @@ export default function Dashboard() {
                                             <td data-label='Cliente'>{item.cliente}</td>
                                             <td data-label='Assunto'>{item.assunto}</td>
                                             <td data-label='Status'>
-                                                <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ?  '#5cb85c' : '#999' }}>{item.status}</span>
+                                                <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}</span>
                                             </td>
                                             <td data-label='Cadastrado'>{item.createdFormated}</td>
                                             <td data-label='#'>
@@ -161,8 +164,8 @@ export default function Dashboard() {
                             </tbody>
                         </table>
 
-                        {loadingMore && <h3 style={{textAlign: 'center', marginTop: 15}}>Buscando dados...</h3>}
-                        { !loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar mais</button>}
+                        {loadingMore && <h3 style={{ textAlign: 'center', marginTop: 15 }}>Buscando dados...</h3>}
+                        {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar mais</button>}
                     </>
                 )}
 
