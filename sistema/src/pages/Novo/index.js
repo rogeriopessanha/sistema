@@ -1,17 +1,83 @@
 
-
+import { useState, useEffect, useContext } from 'react'
+import firebase from '../../services/firebaseConnection'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
+import { AuthContext } from '../../contexts/auth'
 import { FiPlusCircle } from 'react-icons/fi'
 import './novo.css'
 
+
+
 export default function Novo() {
+
+    const[loadClientes, setLoadClientes] = useState(true)
+    const [clientes, setClientes] = useState([])
+    const [clienteSelecionado, setClienteSelecionado] = useState(0)
+
+    const [assunto, setAssunto] = useState('Suporte');
+    const [status, setStatus] = useState('Aberto')
+    const [complemento, setComplemento] = useState('')
+    const {user} = useContext(AuthContext)
+
+    useEffect(() =>{
+        async function loadClientes() {
+            await firebase.firestore().collection('clientes')
+            .get()
+            .then((snapshort) =>{
+                let lista = []
+
+                snapshort.forEach((doc) =>{
+                    lista.push({
+                        id: doc.id,
+                        nomeFantasia: doc.data().nomeFantasia
+                    })
+                })
+
+                if (lista.length === 0) {
+                    console.log('NENHUMA EMPRESA ENCONTRADA')
+                    setClientes([{id: '1', nomeFantasia: 'FREELA'}])
+                    setLoadClientes(false)
+                    return
+                }
+
+                setClientes(lista)
+                setLoadClientes(false)
+            })
+
+            .catch((error) =>{
+                console.log('OPS! DEU ALGUM ERRO', error)
+                setLoadClientes(false)
+                setClientes([{id: '1', nomeFantasia: ''}])
+            })
+        }
+
+        loadClientes()
+
+    }, [])
 
     function handleRegistro(e) {
         e.preventDefault()
         alert('teste')
     }
 
+    //chama quando troca o assunto
+    function handleChangeSelect(e){
+        setAssunto(e.target.value);
+    }
+    
+    //chama quando troca o status
+    function handleOptionChange(e) {
+        setStatus(e.target.value)
+      }
+
+      //chamado quando troca de cliente
+      function handleChangeClientes(e) {
+        // console.log('index do cliente selecionado', e.target.value)
+        // console.log('cliente selecionado', clientes[e.target.value])
+        setClienteSelecionado(e.target.value)
+      }
+    
 
     return (
         <div>
@@ -28,15 +94,29 @@ export default function Novo() {
                     <form className="novo-chamado" onSubmit={handleRegistro}>
 
                         <label>Cliente</label>
-                        <select>
-                            <option value={1} key={1}>Roger</option>
+
+                        {loadClientes ? (
+                            <input type="text" disabled={true} value='Carregando clientes...' />
+                        ) : (
+
+                            <select value={clienteSelecionado} onChange={handleChangeClientes}>
+                            {clientes.map((item, index) =>{
+                                return(
+                                   <option value={index} key={item.id}>
+                                    {item.nomeFantasia}
+                                   </option>
+                                )
+                            })}
                         </select>
+                        
+                        )}
+                        
 
                         <label>Assunto</label>
-                        <select>
-                            <option value='Suporte'>Suporte</option>
-                            <option value='Visita Tecnica' >Suporte</option>
-                            <option value='Financeiro' >Financeiro</option>
+                        <select value={assunto} onChange={handleChangeSelect}>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Visita Tecnica">Visita Tecnica</option>
+                            <option value="Financeiro">Financeiro</option>
                         </select>
 
 
@@ -45,20 +125,23 @@ export default function Novo() {
                             <input
                                 type="radio"
                                 name='radio'
-                                value='Aberto' />
+                                value='Aberto' onChange={handleOptionChange}
+                                checked={status === 'Aberto'} />
                             <span>Em Aberto</span>
 
                             <input
                                 type="radio"
                                 name='radio'
-                                value='Em Progresso' />
+                                value='Em Progresso' onChange={handleOptionChange} 
+                                checked={status === 'Em Progresso'}/> 
                             <span>Em Progresso</span>
 
 
                             <input
                                 type="radio"
                                 name='radio'
-                                value='Finalizado' />
+                                value='Finalizado' onChange={handleOptionChange} 
+                                checked={status === 'Finalizadoo'} />
                             <span>Finalizado</span>
 
                         </div>
@@ -67,6 +150,7 @@ export default function Novo() {
                         <textarea
                             type='text'
                             placeholder='Descreva seu problema(opcional)'
+                            value={complemento} onChange={(e) => setComplemento(e.target.value)}
                         />
 
                         <button className="novo-chamado-btn" type='submit'>Registrar</button>
