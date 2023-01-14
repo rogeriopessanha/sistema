@@ -54,6 +54,7 @@ export default function Perfil() {
                     avatarUrl: urlFoto, nome: nome
                 })
                 .then(() =>{
+                    toast.success('Salvo com sucesso')
                     let data ={
                         ...user,
                         avatarUrl: urlFoto,

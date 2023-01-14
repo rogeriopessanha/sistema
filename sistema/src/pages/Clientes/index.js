@@ -47,7 +47,7 @@ export default function Clientes() {
             <Header/>
 
             <div className="content">
-                <Title name='Clientes'>
+                <Title name='Cadastrar Cliente'>
                     <FiUser size={20}/>
                 </Title>
 
