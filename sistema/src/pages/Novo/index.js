@@ -4,6 +4,7 @@ import firebase from '../../services/firebaseConnection'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { AuthContext } from '../../contexts/auth'
+import { toast } from 'react-toastify';
 import { FiPlusCircle } from 'react-icons/fi'
 import './novo.css'
 
@@ -56,9 +57,30 @@ export default function Novo() {
 
     }, [])
 
-    function handleRegistro(e) {
+    async function handleRegistro(e) {
         e.preventDefault()
-        alert('teste')
+        
+        await firebase.firestore().collection('chamados')
+        .add({
+            created: new Date(),
+            cliente: clientes[clienteSelecionado].nomeFantasia,
+            clienteId: clientes[clienteSelecionado].id,
+            assunto: assunto,
+            status: status,
+            complemento: complemento,
+            userId: user.uid
+        })
+
+        .then(()=> {
+            toast.success('Chamado criado com sucesso')
+            setComplemento('')
+            setClienteSelecionado(0)
+        })
+
+        .catch((err) =>{
+            toast.error('Ops! erro ao registrar, tente mais tarde')
+            console.log(err)
+        })
     }
 
     //chama quando troca o assunto
@@ -108,7 +130,7 @@ export default function Novo() {
                                 )
                             })}
                         </select>
-                        
+
                         )}
                         
 
@@ -149,7 +171,7 @@ export default function Novo() {
                         <label>Complemento</label>
                         <textarea
                             type='text'
-                            placeholder='Descreva seu problema(opcional)'
+                            placeholder='Descreva seu problema...'
                             value={complemento} onChange={(e) => setComplemento(e.target.value)}
                         />
 

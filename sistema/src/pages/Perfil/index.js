@@ -6,6 +6,7 @@ import Title from '../../components/Title'
 import avatar from '../../assets/avatar.png'
 import firebase from '../../services/firebaseConnection'
 import { AuthContext } from '../../contexts/auth';
+import { toast } from 'react-toastify';
 import { FiSettings, FiUpload } from "react-icons/fi";
 
 
@@ -73,6 +74,7 @@ export default function Perfil() {
 
             await firebase.firestore().collection('users').doc(user.uid).update({nome: nome})
             .then(() => {
+                toast.success('Salvo com sucesso')
                 let data = {...user, nome: nome} 
                 setUser(data)
                 storageUser(data)
