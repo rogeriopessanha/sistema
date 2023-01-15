@@ -86,6 +86,10 @@ export default function Dashboard() {
             })
     }
 
+    function togglePostModal(item) {
+        console.log(item)
+    }
+
     if (loading) {
         return (
             <div>
@@ -143,27 +147,28 @@ export default function Dashboard() {
                             </thead>
 
                             <tbody>
-                                {chamados.map((item, index) => {
-                                    return (
-                                        <tr key={index}>
-                                            <td data-label='Cliente'>{item.cliente}</td>
-                                            <td data-label='Assunto'>{item.assunto}</td>
-                                            <td data-label='Status'>
-                                                <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}</span>
-                                            </td>
-                                            <td data-label='Cadastrado'>{item.createdFormated}</td>
-                                            <td data-label='#'>
-                                                <button className="btn-acao" style={{ backgroundColor: '#3583f6' }}>
-                                                    <FiSearch color='#fff' size={16} />
-                                                </button>
+{chamados.map((item, index) => {
+return (
+    <tr key={index}>
+        <td data-label='Cliente'>{item.cliente}</td>
+        <td data-label='Assunto'>{item.assunto}</td>
+        <td data-label='Status'>
+            <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}  </span>
+        </td>
+        <td data-label='Cadastrado'>{item.createdFormated}</td>
+        <td data-label='#'>
 
-                                                <button className="btn-acao" style={{ backgroundColor: '#f6a935' }}>
-                                                    <FiEdit2 color='#fff' size={16} />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
+            <button className="btn-acao" style={{ backgroundColor: '#3583f6' }} onClick={() => togglePostModal(item) } >
+                <FiSearch color='#fff' size={16} />
+            </button>
+
+            <button className="btn-acao" style={{ backgroundColor: '#f6a935' }}>
+                <FiEdit2 color='#fff' size={16} />
+            </button>
+        </td>
+    </tr>
+)
+})}
                             </tbody>
                         </table>
 
