@@ -158,12 +158,11 @@ export default function Novo() {
                                 checked={status === 'Em Progresso'}/> 
                             <span>Em Progresso</span>
 
-
                             <input
                                 type="radio"
                                 name='radio'
                                 value='Finalizado' onChange={handleOptionChange} 
-                                checked={status === 'Finalizadoo'} />
+                                checked={status === 'Finalizado'}/> 
                             <span>Finalizado</span>
 
                         </div>

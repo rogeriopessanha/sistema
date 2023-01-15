@@ -1,6 +1,9 @@
 import './dashboard.css'
 import { useState, useEffect } from 'react'
 
+// import { useContext } from "react"
+// import { AuthContext } from "../../contexts/auth"
+
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi'
@@ -27,7 +30,7 @@ export default function Dashboard() {
     }, [])
 
     async function loadChamados() {
-        await listRef.limit(2)
+        await listRef.limit(5)
             .get()
             .then((snapshot) => {
                 updateState(snapshot)
@@ -76,7 +79,7 @@ export default function Dashboard() {
 
     async function handleMore() {
         setLoadingMore(true);
-        await listRef.startAfter(lastDocs).limit(2)
+        await listRef.startAfter(lastDocs).limit(5)
             .get()
             .then((snapshot) => {
                 updateState(snapshot)

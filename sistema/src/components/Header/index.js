@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth'
 import avatar from '../../assets/avatar.png'
 
 import {Link} from 'react-router-dom'
-import { FiUser, FiEdit, FiCheckSquare } from "react-icons/fi";
+import { FiUser, FiEdit, FiCheckSquare, FiFileText } from "react-icons/fi";
 
 export default function Header() {
 
@@ -18,7 +18,7 @@ export default function Header() {
             </div>
 
             <Link to='/dashboard'>
-            <FiCheckSquare color='#fff' size={24}/>
+            <FiFileText color='#fff' size={24}/>
             Chamados
             </Link>
 
