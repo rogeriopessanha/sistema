@@ -24,6 +24,8 @@ export default function Routes() {
             <Route exact path='/clientes' component={Clientes} isPrivate/>
 
             <Route exact path='/novo' component={Novo} isPrivate/>
+
+            <Route exact path='/novo:id' component={Novo} isPrivate/>
         </Switch>
     )
 }

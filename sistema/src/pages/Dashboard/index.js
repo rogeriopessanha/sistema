@@ -10,6 +10,7 @@ import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import firebase from '../../services/firebaseConnection'
+import Modal from '../../components/Modal'
 
 const listRef = firebase.firestore().collection('chamados').orderBy('created', 'desc');
 
@@ -20,7 +21,25 @@ export default function Dashboard() {
     const [isEmpty, setIsEmpty] = useState(false)
     const [lastDocs, setLastDocs] = useState()
 
+    const [showPostModal, setShowPostModal] = useState(false)
+    const [detail, setDetail] = useState()
+
     useEffect(() => {
+
+        async function loadChamados() {
+            await listRef.limit(5)
+                .get()
+                .then((snapshot) => {
+                    updateState(snapshot)
+                })
+                .catch((err) => {
+                    console.log('Deu algum erro: ', err);
+                    setLoadingMore(false);
+                })
+
+            setLoading(false);
+
+        }
 
         loadChamados()
 
@@ -29,20 +48,7 @@ export default function Dashboard() {
         }
     }, [])
 
-    async function loadChamados() {
-        await listRef.limit(5)
-            .get()
-            .then((snapshot) => {
-                updateState(snapshot)
-            })
-            .catch((err) => {
-                console.log('Deu algum erro: ', err);
-                setLoadingMore(false);
-            })
 
-        setLoading(false);
-
-    }
 
 
     async function updateState(snapshot) {
@@ -87,7 +93,8 @@ export default function Dashboard() {
     }
 
     function togglePostModal(item) {
-        console.log(item)
+        setShowPostModal(!showPostModal) //trocando de true para false(abrindo e fechando o modal)
+        setDetail(item)
     }
 
     if (loading) {
@@ -147,28 +154,28 @@ export default function Dashboard() {
                             </thead>
 
                             <tbody>
-{chamados.map((item, index) => {
-return (
-    <tr key={index}>
-        <td data-label='Cliente'>{item.cliente}</td>
-        <td data-label='Assunto'>{item.assunto}</td>
-        <td data-label='Status'>
-            <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}  </span>
-        </td>
-        <td data-label='Cadastrado'>{item.createdFormated}</td>
-        <td data-label='#'>
+                                {chamados.map((item, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td data-label='Cliente'>{item.cliente}</td>
+                                            <td data-label='Assunto'>{item.assunto}</td>
+                                            <td data-label='Status'>
+                                                <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}  </span>
+                                            </td>
+                                            <td data-label='Cadastrado'>{item.createdFormated}</td>
+                                            <td data-label='#'>
 
-            <button className="btn-acao" style={{ backgroundColor: '#3583f6' }} onClick={() => togglePostModal(item) } >
-                <FiSearch color='#fff' size={16} />
-            </button>
+                                                <button className="btn-acao" style={{ backgroundColor: '#3583f6' }} onClick={() => togglePostModal(item)} >
+                                                    <FiSearch color='#fff' size={16} />
+                                                </button>
 
-            <button className="btn-acao" style={{ backgroundColor: '#f6a935' }}>
-                <FiEdit2 color='#fff' size={16} />
-            </button>
-        </td>
-    </tr>
-)
-})}
+<Link className="btn-acao" style={{ backgroundColor: '#f6a935' }} to={`/Novo/${item.id}`} >
+    <FiEdit2 color='#fff' size={16} />
+</Link>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </table>
 
@@ -180,6 +187,12 @@ return (
 
             </div>
 
+            {showPostModal && (
+                <Modal
+                    conteudo={detail}
+                    close={togglePostModal}
+                />
+            )}
 
         </div>
     )

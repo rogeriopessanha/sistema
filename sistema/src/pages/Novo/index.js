@@ -170,7 +170,7 @@ export default function Novo() {
                         <label>Complemento</label>
                         <textarea
                             type='text'
-                            placeholder='Descreva seu problema...'
+                            placeholder='Me fale um pouco sobre o assunto(opcional)...'
                             value={complemento} onChange={(e) => setComplemento(e.target.value)}
                         />
 
