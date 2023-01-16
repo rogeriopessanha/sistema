@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth'
 import avatar from '../../assets/avatar.png'
 
 import {Link} from 'react-router-dom'
-import { FiUser, FiEdit, FiCheckSquare, FiFileText } from "react-icons/fi";
+import { FiUser, FiEdit, FiFileText } from "react-icons/fi";
 
 export default function Header() {
 

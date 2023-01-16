@@ -19,12 +19,13 @@
 
 form textarea{
     height: 115px;
-    width: 245px;
+    width: 275px;
     resize: none;
 }
 
 form input[type='radio']{
     margin: 15px 0;
+    
 }
 
 form input[type='radio']:not(:first-child){
@@ -46,7 +47,7 @@ form input[type='radio']:not(:first-child){
   }
 
   .novo-chamado select{
-    width: 250px;
+    width: 270px;
   }
   
  .novo-chamado-btn{

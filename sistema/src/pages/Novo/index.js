@@ -40,7 +40,7 @@ export default function Novo() {
                     })
 
                     if (lista.length === 0) {
-                        console.log('NENHUMA EMPRESA ENCONTRADA')
+                        console.log('EMPRESA NÃO ENCONTRADA')
                         setClientes([{ id: '1', nomeFantasia: 'EMPRESA NÃO CADASTRADA' }])
                         setLoadClientes(false)
                         return
@@ -97,17 +97,17 @@ export default function Novo() {
                     complemento: complemento,
                     userId: user.uid
                 })
-                .then(() =>{
+                .then(() => {
                     toast.success('Chamado Editado com Sucesso')
                     setClienteSelecionado(0)
                     setComplemento('')
                     History.push('/dashboard')
                 })
-                .catch((err) =>{
+                .catch((err) => {
                     toast.error('Ops, erro ao editar, tente mais tarde')
                     console.log(err)
                 })
-                return
+            return
         }
 
         await firebase.firestore().collection('chamados')
@@ -199,14 +199,14 @@ export default function Novo() {
                                 name='radio'
                                 value='Aberto' onChange={handleOptionChange}
                                 checked={status === 'Aberto'} />
-                            <span>Em Aberto</span>
+                            <span>Aberto</span>
 
                             <input
                                 type="radio"
                                 name='radio'
-                                value='Em Progresso' onChange={handleOptionChange}
-                                checked={status === 'Em Progresso'} />
-                            <span>Em Progresso</span>
+                                value='Progresso' onChange={handleOptionChange}
+                                checked={status === 'Progresso'} />
+                            <span>Progresso</span>
 
                             <input
                                 type="radio"
@@ -225,7 +225,6 @@ export default function Novo() {
                         />
 
                         <button className="novo-chamado-btn" type='submit'>Registrar</button>
-
 
                     </form>
                 </div>

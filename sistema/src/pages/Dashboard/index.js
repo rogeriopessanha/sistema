@@ -48,9 +48,6 @@ export default function Dashboard() {
         }
     }, [])
 
-
-
-
     async function updateState(snapshot) {
         const isCollectionEmpty = snapshot.size === 0;
 
@@ -80,7 +77,6 @@ export default function Dashboard() {
         }
 
         setLoadingMore(false);
-
     }
 
     async function handleMore() {
@@ -160,18 +156,37 @@ export default function Dashboard() {
                                             <td data-label='Cliente'>{item.cliente}</td>
                                             <td data-label='Assunto'>{item.assunto}</td>
                                             <td data-label='Status'>
-                                                <span className="andamento" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}  </span>
+                                                <span className="andamento"
+                                                 style={{ backgroundColor: 
+                                                 item.status === 'Aberto' ?
+                                                  '#5cb85c' : '#999' }}>
+                                                    {item.status}  
+                                                    </span>
                                             </td>
                                             <td data-label='Cadastrado'>{item.createdFormated}</td>
                                             <td data-label='#'>
 
-                                                <button className="btn-acao" style={{ backgroundColor: '#3583f6' }} onClick={() => togglePostModal(item)} >
-                                                    <FiSearch color='#fff' size={16} />
+                                                <button 
+                                                className="btn-acao" 
+                                                style={{ backgroundColor: 
+                                                '#3583f6' }} onClick={() =>
+                                                 togglePostModal(item)} >
+                                                    <FiSearch 
+                                                    color='#fff' 
+                                                    size={16} 
+                                                    />
                                                 </button>
 
-<Link className="btn-acao" style={{ backgroundColor: '#f6a935' }} to={`/novo/${item.id}`} >
-    <FiEdit2 color='#fff' size={16} />
-</Link>
+                                                <Link 
+                                                className="btn-acao" 
+                                                style={{ backgroundColor: 
+                                                '#f6a935' }} 
+                                                to={`/novo/${item.id}`} >
+                                                <FiEdit2 
+                                                color='#fff' 
+                                                size={16}
+                                                />
+                                                </Link>
                                             </td>
                                         </tr>
                                     )
