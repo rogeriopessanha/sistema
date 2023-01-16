@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useContext } from 'react'
 import firebase from '../../services/firebaseConnection'
+import {useHistory, useParams} from 'react-router-dom'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { AuthContext } from '../../contexts/auth'
@@ -11,6 +12,8 @@ import './novo.css'
 
 
 export default function Novo() {
+    const {id} = useParams()
+    const History = useHistory()
 
     const[loadClientes, setLoadClientes] = useState(true)
     const [clientes, setClientes] = useState([])
@@ -20,6 +23,7 @@ export default function Novo() {
     const [status, setStatus] = useState('Aberto')
     const [complemento, setComplemento] = useState('')
     const {user} = useContext(AuthContext)
+    const [idCliente, setIdCliente] = useState('')
 
     useEffect(() =>{
         async function loadClientes() {
@@ -37,13 +41,17 @@ export default function Novo() {
 
                 if (lista.length === 0) {
                     console.log('NENHUMA EMPRESA ENCONTRADA')
-                    setClientes([{id: '1', nomeFantasia: 'FREELA'}])
+                    setClientes([{id: '1', nomeFantasia: 'EMPRESA NÃO CADASTRADA'}])
                     setLoadClientes(false)
                     return
                 }
 
                 setClientes(lista)
                 setLoadClientes(false)
+
+                if (id) {
+                    loadId(lista)
+                }
             })
 
             .catch((error) =>{
@@ -55,7 +63,25 @@ export default function Novo() {
 
         loadClientes()
 
-    }, [])
+    }, [id])
+
+    async function loadId(Lista) {
+        await firebase.firestore().collection('chamados').doc(id)
+        .get()
+        .then((snapshot) =>{
+            setAssunto(snapshot.data().assunto)
+            setStatus(snapshot.data().status)
+            setComplemento(snapshot.data().complemento)
+
+            let index = Lista.findIndex(item => item.id === snapshot.data().clienteId)
+            setClienteSelecionado(index)
+            setIdCliente(true)
+        })
+        .catch((err) => {
+            console.log('ERRO NO ID INFORMADO: ', err )
+            setIdCliente(false)
+        })
+    }
 
     async function handleRegistro(e) {
         e.preventDefault()

@@ -25,7 +25,7 @@ export default function Routes() {
 
             <Route exact path='/novo' component={Novo} isPrivate/>
 
-            <Route exact path='/novo:id' component={Novo} isPrivate/>
+            <Route exact path='/novo/:id' component={Novo} isPrivate/>
         </Switch>
     )
 }

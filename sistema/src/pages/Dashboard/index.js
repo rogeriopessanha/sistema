@@ -169,7 +169,7 @@ export default function Dashboard() {
                                                     <FiSearch color='#fff' size={16} />
                                                 </button>
 
-<Link className="btn-acao" style={{ backgroundColor: '#f6a935' }} to={`/Novo/${item.id}`} >
+<Link className="btn-acao" style={{ backgroundColor: '#f6a935' }} to={`/novo/${item.id}`} >
     <FiEdit2 color='#fff' size={16} />
 </Link>
                                             </td>
