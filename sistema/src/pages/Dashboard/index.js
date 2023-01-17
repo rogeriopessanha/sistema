@@ -1,9 +1,5 @@
 import './dashboard.css'
 import { useState, useEffect } from 'react'
-
-// import { useContext } from "react"
-// import { AuthContext } from "../../contexts/auth"
-
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi'

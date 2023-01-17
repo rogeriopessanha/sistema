@@ -1,5 +1,5 @@
 
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import {AuthContext} from '../contexts/auth'
 
@@ -19,17 +19,11 @@ export default function RouteWrapper({
 
     //se não estiver logado, retorna para o login
     if (!signed && isPrivate) {
-        return (
-            <Redirect to='/' />
-        )
-    }
+        return <Redirect to='/' />}
 
     //se estiver logado, acessa a dashboard
     if (signed && !isPrivate) {
-        return (
-            <Redirect to='/dashboard' />
-        )
-    }
+        return <Redirect to='/dashboard' />}
 
     return (
         <Route
@@ -40,3 +34,54 @@ export default function RouteWrapper({
         />
     )
 }
+
+
+
+
+
+
+// import { useContext } from 'react';
+
+// import { Navigate } from 'react-router-dom'; //Agora utilizamos Navigate para redirecionar a página para o local desejado.
+
+// import { AuthContext } from '../contexts/user';
+
+
+
+// export default function RouteWrapper({ loggedComponent, defaultComponent, isPrivate}) {
+
+//       const { auth, loadingPage } = useContext(AuthContext);
+
+
+
+//       if (loadingPage) {
+
+//           return (
+
+//              <div>
+
+//                   <span>Carregando...</span>
+
+//              </div>
+
+//           )
+
+//      }
+
+
+
+//        if (auth && !isPrivate) {
+
+//               return <Navigate to='/dashboard' /> //direciona para página privada.
+
+//       } else if (!auth && isPrivate) {
+
+//               return <Navigate to='/' /> //direciona para página inicial.
+
+//       }
+
+
+
+// return auth ? loggedComponent : defaultComponent
+
+// }
