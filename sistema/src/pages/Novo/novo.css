@@ -8,7 +8,7 @@
     justify-content: center;
     margin-bottom: 1em;
     max-height: 550px;
-    height: 750px;
+    height: 482px;
   }
 
   .novo-chamado{
@@ -18,7 +18,7 @@
   }
 
 form textarea{
-    height: 115px;
+    height: 95px;
     width: 275px;
     resize: none;
 }
@@ -49,6 +49,12 @@ form input[type='radio']:not(:first-child){
   .novo-chamado select{
     width: 270px;
   }
+
+  .status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
  .novo-chamado-btn{
   background-color: #2502bf;
@@ -58,4 +64,7 @@ form input[type='radio']:not(:first-child){
   background-color: #441aff;
   color: #fff;
  }
+
+
+ 
  

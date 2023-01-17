@@ -58,6 +58,7 @@ table tr{
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     padding: .35em;
+    overflow-wrap: break-word;
 }
 
 table th, 
@@ -122,13 +123,13 @@ table td .andamento{
         position: absolute;
         width: 1px;
     }
-
+    
     table tr{
         border-bottom: 3px solid #ddd;
         display: block;
         margin-bottom: .65em;
     }
-
+    
     table td{
         border-bottom: 1px solid #ddd;
         display: block;

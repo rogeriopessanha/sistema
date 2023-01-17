@@ -11,12 +11,12 @@
 
 .modal .container{
     position: fixed;
-    max-width: 600px;
+    width: 270px;
     top: 15%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    padding: 5em 4rem;
+    padding: 1em ;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0,0,0, 0.8);
 }
@@ -30,26 +30,27 @@
     border: 0;
     color: #fff;
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 5px;
+    right: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
 }
 
 
 .modal h2{
     margin-bottom: 1.2em;
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 .modal span{
     font-weight: bold;
     font-size: 1.2em;
     color: #121212;
+    overflow-wrap: break-word;
 }
 
 .modal span a{
@@ -60,10 +61,25 @@
 }
 
 .row{
-    margin-bottom: 1em;
+    margin-bottom: 1.4em;
 }
 
 .modal p{
     padding-top: .5em;
     white-space: pre-wrap;
+}
+
+
+@media screen and (max-width: 450px) {
+    .modal h2{
+        margin-bottom: 1.2em;
+        font-size: 1.3em;
+    }
+    
+    .modal span{
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #121212;
+        margin-bottom: 2.2em;
+    }
 }

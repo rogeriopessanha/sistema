@@ -88,9 +88,11 @@
     }
     
     .sidebar a{
-        float: left;
         text-align: center;
-        padding: 18px;
+        align-items: center;
+        padding: 12px;
+        position: relative;
+        left: 22px;
     }
 
     .sidebar div{
