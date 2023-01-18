@@ -1,7 +1,10 @@
 
+
+
 import { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import {AuthContext} from '../contexts/auth'
+import PropTypes from 'prop-types';
 
 export default function RouteWrapper({
     component: Component,
@@ -25,63 +28,24 @@ export default function RouteWrapper({
     if (signed && !isPrivate) {
         return <Redirect to='/dashboard' />}
 
-    return (
-        <Route
-            {...rest}
-            render={props => (
-                <Component {...props} />
-            )}
+    return (<Route {...rest} render={props => ( <Component {...props} /> )}
         />
     )
 }
 
+RouteWrapper.propTypes = {
+    isPrivate: PropTypes.bool,
+    component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+      .isRequired,
+  };
+  
+  RouteWrapper.defaultProps = {
+    isPrivate: false,
+  };
 
 
 
 
 
-// import { useContext } from 'react';
-
-// import { Navigate } from 'react-router-dom'; //Agora utilizamos Navigate para redirecionar a página para o local desejado.
-
-// import { AuthContext } from '../contexts/user';
 
 
-
-// export default function RouteWrapper({ loggedComponent, defaultComponent, isPrivate}) {
-
-//       const { auth, loadingPage } = useContext(AuthContext);
-
-
-
-//       if (loadingPage) {
-
-//           return (
-
-//              <div>
-
-//                   <span>Carregando...</span>
-
-//              </div>
-
-//           )
-
-//      }
-
-
-
-//        if (auth && !isPrivate) {
-
-//               return <Navigate to='/dashboard' /> //direciona para página privada.
-
-//       } else if (!auth && isPrivate) {
-
-//               return <Navigate to='/' /> //direciona para página inicial.
-
-//       }
-
-
-
-// return auth ? loggedComponent : defaultComponent
-
-// }

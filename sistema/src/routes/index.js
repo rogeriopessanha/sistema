@@ -1,4 +1,6 @@
 
+
+
 import { Switch } from 'react-router-dom'
 import Route  from './Route'
 
@@ -32,33 +34,5 @@ export default function Routes() {
 
 
 
-// import { Routes, Route } from "react-router-dom"; // Não utilizamos Switch, mas sim Routes.
-
-// import RouteWrapper from "./teste"; 
-
-// import SignIn from '../pages/SingIn'; // Página de login.
-
-// import SignUp from '../pages/SignUp'; // Página de cadastro.
-
-// import Dashboard from '../pages/Dashboard'; // Página privada.
 
 
-
-// export default function AllRoutes() {
-
-//     return (
-
-//         <Routes>
-
-//             <Route path='/' element={<RouteWrapper loggedComponent={<Dashboard />} defaultComponent={<SignIn />} />} /> 
-
-//             <Route path='/dashboard' element={<RouteWrapper loggedComponent={<Dashboard />} defaultComponent={<SignIn />} isPrivate />} />
-
-//             <Route path='/signin' element={<RouteWrapper loggedComponent={<Dashboard />} defaultComponent={<SignIn />} />} />
-
-//             <Route path='/signup' element={<RouteWrapper loggedComponent={<Dashboard />} defaultComponent={<SignUp />} />} />
-
-//         </Routes>
-
-//     )
-// }
