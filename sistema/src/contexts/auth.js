@@ -77,7 +77,7 @@ function AuthProvider({ children }) {
                 let data = {
                     uid: uid,
                     nome: nome,
-                    email: email,
+                    email: value.user.email,
                     avatarUrl: null
                 }
 

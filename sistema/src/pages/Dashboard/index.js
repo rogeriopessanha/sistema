@@ -23,7 +23,7 @@ export default function Dashboard() {
     useEffect(() => {
 
         async function loadChamados() {
-            await listRef.limit(5)
+            await listRef.limit(3)
                 .get()
                 .then((snapshot) => {
                     updateState(snapshot)
@@ -77,7 +77,7 @@ export default function Dashboard() {
 
     async function handleMore() {
         setLoadingMore(true);
-        await listRef.startAfter(lastDocs).limit(5)
+        await listRef.startAfter(lastDocs).limit(3)
             .get()
             .then((snapshot) => {
                 updateState(snapshot)
@@ -106,8 +106,6 @@ export default function Dashboard() {
             </div>
         )
     }
-
-
 
     return (
         <div>
@@ -153,35 +151,41 @@ export default function Dashboard() {
                                             <td data-label='Assunto'>{item.assunto}</td>
                                             <td data-label='Status'>
                                                 <span className="andamento"
-                                                 style={{ backgroundColor: 
-                                                 item.status === 'Aberto' ?
-                                                  '#5cb85c' : '#999' }}>
-                                                    {item.status}  
-                                                    </span>
+                                                    style={{
+                                                        backgroundColor:
+                                                            item.status === 'Aberto' ?
+                                                                '#5cb85c' : '#999'
+                                                    }}>
+                                                    {item.status}
+                                                </span>
                                             </td>
                                             <td data-label='Cadastrado'>{item.createdFormated}</td>
                                             <td data-label='#'>
 
-                                                <button 
-                                                className="btn-acao" 
-                                                style={{ backgroundColor: 
-                                                '#3583f6' }} onClick={() =>
-                                                 togglePostModal(item)} >
-                                                    <FiSearch 
-                                                    color='#fff' 
-                                                    size={16} 
+                                                <button
+                                                    className="btn-acao"
+                                                    style={{
+                                                        backgroundColor:
+                                                            '#3583f6'
+                                                    }} onClick={() =>
+                                                        togglePostModal(item)} >
+                                                    <FiSearch
+                                                        color='#fff'
+                                                        size={16}
                                                     />
                                                 </button>
 
-                                                <Link 
-                                                className="btn-acao" 
-                                                style={{ backgroundColor: 
-                                                '#f6a935' }} 
-                                                to={`/novo/${item.id}`} >
-                                                <FiEdit2 
-                                                color='#fff' 
-                                                size={16}
-                                                />
+                                                <Link
+                                                    className="btn-acao"
+                                                    style={{
+                                                        backgroundColor:
+                                                            '#f6a935'
+                                                    }}
+                                                    to={`/novo/${item.id}`} >
+                                                    <FiEdit2
+                                                        color='#fff'
+                                                        size={16}
+                                                    />
                                                 </Link>
                                             </td>
                                         </tr>

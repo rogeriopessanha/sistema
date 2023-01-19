@@ -205,7 +205,7 @@ export default function Novo() {
                                 type="radio"
                                 name='radio'
                                 value='Progresso' onChange={handleOptionChange}
-                                checked={status === 'Progresso'} />
+                                checked={status === 'Progresso'}  />
                             <span>Progresso</span>
 
                             <input
